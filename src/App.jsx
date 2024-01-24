@@ -69,7 +69,7 @@ setModalIsOpen(false)
       // }
     );
 setModalIsOpen(false)
-    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];g
+    const storedIds = JSON.parse(localStorage.getItem('selectedPlaces')) || [];
     localStorage.setItem(
         'selectedPlaces',
         JSON.stringify(storedIds.filter((id) => id !== selectedPlace.current))
@@ -78,11 +78,13 @@ setModalIsOpen(false)
 
   return (
     <>
-      <Modal open={modalIsOpen}>
+      <Modal open={modalIsOpen} onClose={handleRemovePlace}>
+       {modalIsOpen && (
         <DeleteConfirmation
           onCancel={handleStopRemovePlace}
           onConfirm={handleRemovePlace}
         />
+       )} 
       </Modal>
 
       <header>
